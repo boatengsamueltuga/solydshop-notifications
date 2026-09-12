@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solydshop-notifications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solydshop-notifications
+  template:
+    metadata:
+      labels:
+        app: solydshop-notifications
+    spec:
+      containers:
+        - name: notifications
+          image: ghcr.io/boatengsamueltuga/solydshop-notifications:latest
+          ports:
+            - containerPort: 8081
+          envFrom:
+            - configMapRef:
+                name: notifications-config
+            - secretRef:
+                name: notifications-secrets
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 35
+            periodSeconds: 15

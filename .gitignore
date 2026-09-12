@@ -1,0 +1,30 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+
+# Local-only secret overrides (real secrets, never committed)
+src/main/resources/application-secrets.properties
+
+# k3s deployment (real secrets, local-only)
+k8s/secret.yaml
+k8s/kubeconfig.yaml
