@@ -3,4 +3,6 @@ kind: ConfigMap
 metadata:
   name: notifications-config
 data:
-  DB_URL: "jdbc:postgresql://45.55.78.201:5432/notificationsdb"
+  DB_URL: "jdbc:postgresql://45.55.78.201:5432/notificationsdb?sslmode=disable"
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_PORT: "5672"
